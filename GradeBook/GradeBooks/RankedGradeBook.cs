@@ -18,7 +18,7 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException();
             }
 
-            Students.Sort((x, y) =>x.AverageGrade.CompareTo(y.AverageGrade));
+            Students.Sort((x, y) =>-x.AverageGrade.CompareTo(y.AverageGrade));
 
             if (averageGrade >= Students[(int)Math.Ceiling(Students.Count*0.2)].AverageGrade)
                 return 'A';
