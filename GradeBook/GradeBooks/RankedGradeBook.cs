@@ -20,13 +20,13 @@ namespace GradeBook.GradeBooks
 
             Students.Sort((x, y) =>-x.AverageGrade.CompareTo(y.AverageGrade));
 
-            if (averageGrade >= Students[(int)Math.Ceiling(Students.Count*0.2)].AverageGrade)
+            if (averageGrade >= Students[(int)Math.Ceiling(Students.Count*0.2)-1].AverageGrade)
                 return 'A';
-            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.4)].AverageGrade)
+            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.4) - 1].AverageGrade)
                 return 'B';
-            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.6)].AverageGrade)
+            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.6) - 1].AverageGrade)
                 return 'C';
-            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.8)].AverageGrade)
+            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.8) - 1].AverageGrade)
                 return 'D';
             else
                 return 'F';
