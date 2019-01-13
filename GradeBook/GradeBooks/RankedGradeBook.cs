@@ -18,15 +18,18 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException();
             }
 
-            Students.Sort((x, y) =>-x.AverageGrade.CompareTo(y.AverageGrade));
+            List<Student> LetterGrade = new List<Student>();
+            LetterGrade = Students;
 
-            if (averageGrade >= Students[(int)Math.Ceiling(Students.Count*0.2)-1].AverageGrade)
+            LetterGrade.Sort((x, y) =>-x.AverageGrade.CompareTo(y.AverageGrade));
+
+            if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count*0.2)-1].AverageGrade)
                 return 'A';
-            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.4) - 1].AverageGrade)
+            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.4) - 1].AverageGrade)
                 return 'B';
-            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.6) - 1].AverageGrade)
+            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.6) - 1].AverageGrade)
                 return 'C';
-            else if (averageGrade >= Students[(int)Math.Ceiling(Students.Count * 0.8) - 1].AverageGrade)
+            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.8) - 1].AverageGrade)
                 return 'D';
             else
                 return 'F';
