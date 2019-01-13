@@ -2,6 +2,7 @@
 using GradeBook.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GradeBook.GradeBooks
 {
@@ -19,18 +20,15 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException();
             }
 
-            List<Student> LetterGrade = new List<Student>();
-            LetterGrade = Students;
+            var LetterGrade = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
 
-            LetterGrade.Sort((x, y) =>-x.AverageGrade.CompareTo(y.AverageGrade));
-
-            if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count*0.2)-1].AverageGrade)
+            if (averageGrade >= LetterGrade[(int)Math.Ceiling(Students.Count * 0.2) - 1])
                 return 'A';
-            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.4) - 1].AverageGrade)
+            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(Students.Count * 0.4) - 1])
                 return 'B';
-            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.6) - 1].AverageGrade)
+            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.6) - 1])
                 return 'C';
-            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.8) - 1].AverageGrade)
+            else if (averageGrade >= LetterGrade[(int)Math.Ceiling(LetterGrade.Count * 0.8) - 1])
                 return 'D';
             else
                 return 'F';
